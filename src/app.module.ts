@@ -1,22 +1,33 @@
 import { Module } from '@nestjs/common';
-import { createObserveModule } from '@nestjs/observe';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-export const { ObserveModule, ObserveInstrument } = createObserveModule();
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { StudentsModule } from './students/students.module';
+import { VaccinesModule } from './vaccines/vaccines.module';
+import { VaccinationRecordsModule } from './vaccination-records/vaccination-records.module';
 
 @Module({
   imports: [
-    // Distributed tracing, auto-correlated logs, request/job metrics, error
-    // telemetry, alarms, and more — out of the box. Sign up at https://observe.nestjs.com,
-    // then run `npx @nestjs/observe link` to write your key pair into .env.
-    ObserveModule.forRoot({
-      appKey: process.env.OBSERVE_APP_KEY ?? 'YOUR_APP_KEY',
-      appSecret: process.env.OBSERVE_APP_SECRET ?? 'YOUR_APP_SECRET',
-      serviceId: 'vaccine-api',
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (c: ConfigService) => ({ entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        type: 'mysql',
+        host: c.get('DB_HOST'),
+        port: +c.get('DB_PORT'),
+        username: c.get('DB_USER'),
+        password: c.get('DB_PASS'),
+        database: c.get('DB_NAME'),
+        autoLoadEntities: true,
+        synchronize: true, // dev only
+      }),
     }),
+    AuthModule,
+    UsersModule,
+    StudentsModule,
+    VaccinesModule,
+    VaccinationRecordsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
