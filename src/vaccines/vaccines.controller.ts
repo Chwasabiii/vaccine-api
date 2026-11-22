@@ -1,34 +1,46 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { VaccinesService } from './vaccines.service';
+import {
+  Body, Controller, Delete, Get, HttpCode, Param,
+  ParseIntPipe, Patch, Post, UseGuards,
+} from '@nestjs/common';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
+import { RolesGuard } from '../auth/guard/roles.guard';
+import { Role } from '../users/entities/user.entity';
 import { CreateVaccineDto } from './dto/create-vaccine.dto';
 import { UpdateVaccineDto } from './dto/update-vaccine.dto';
+import { VaccinesService } from './vaccines.service';
 
 @Controller('vaccines')
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class VaccinesController {
-  constructor(private readonly vaccinesService: VaccinesService) {}
+  constructor(private readonly vaccines: VaccinesService) {}
 
   @Post()
-  create(@Body() createVaccineDto: CreateVaccineDto) {
-    return this.vaccinesService.create(createVaccineDto);
+  @Roles(Role.ADMIN, Role.STAFF)
+  create(@Body() dto: CreateVaccineDto) {
+    return this.vaccines.create(dto);
   }
 
   @Get()
   findAll() {
-    return this.vaccinesService.findAll();
+    return this.vaccines.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vaccinesService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.vaccines.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVaccineDto: UpdateVaccineDto) {
-    return this.vaccinesService.update(+id, updateVaccineDto);
+  @Roles(Role.ADMIN, Role.STAFF)
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateVaccineDto) {
+    return this.vaccines.update(id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vaccinesService.remove(+id);
+  @Roles(Role.ADMIN)
+  @HttpCode(204)
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.vaccines.remove(id);
   }
 }
