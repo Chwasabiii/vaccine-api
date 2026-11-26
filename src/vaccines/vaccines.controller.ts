@@ -1,6 +1,6 @@
 import {
   Body, Controller, Delete, Get, HttpCode, Param,
-  ParseIntPipe, Patch, Post, UseGuards,
+  ParseIntPipe, Patch, Post, Req, UseGuards,
 } from '@nestjs/common';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
@@ -22,8 +22,8 @@ export class VaccinesController {
   }
 
   @Get()
-  findAll() {
-    return this.vaccines.findAll();
+  findAll(@Req() req: any) {
+    return this.vaccines.findAll(req.user);
   }
 
   @Get(':id')

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2">
+  <title>VaxCare · Student portal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+    :root{font-family:'DM Sans',sans-serif;color:#20332d;background:#f5f7f2;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 78% 8%,#e3efe5 0,transparent 32%),#f5f7f2}button,input{font:inherit}.shell{max-width:1160px;margin:auto;padding:26px 34px 48px}.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:52px}.brand{display:flex;align-items:center;gap:11px;font-family:Manrope,sans-serif;font-size:19px;font-weight:800;letter-spacing:-.5px}.logo{width:39px;height:39px;background:#235b49;border-radius:13px;display:grid;place-items:center;color:white}.logo svg{width:22px}.nav-note{font-size:13px;color:#788780}.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}.intro{padding:10px 0 50px}.eyebrow{text-transform:uppercase;letter-spacing:1.5px;color:#43836a;font-size:11px;font-weight:700}.intro h1{font-family:Manrope,sans-serif;font-size:clamp(40px,5vw,62px);line-height:1.08;letter-spacing:-2.8px;margin:17px 0;color:#1d3830;max-width:570px}.intro p{font-size:16px;color:#708078;line-height:1.75;max-width:460px}.feature-list{display:grid;gap:16px;margin-top:34px}.feature{display:flex;align-items:center;gap:13px;color:#435850;font-size:14px}.feature-icon{width:34px;height:34px;border-radius:11px;background:#e6eee5;display:grid;place-items:center;color:#458267;font-size:15px}.card{background:#fff;border:1px solid #e7ece6;border-radius:22px;padding:32px;box-shadow:0 20px 60px #284c3610}.card h2{font:700 24px Manrope,sans-serif;margin:0 0 8px;letter-spacing:-.7px}.sub{color:#7a8982;font-size:14px;margin:0 0 25px}.tabs{display:flex;padding:4px;background:#f2f5f1;border-radius:12px;margin-bottom:22px}.tabs button{border:0;background:transparent;color:#78877f;border-radius:9px;flex:1;padding:10px;cursor:pointer;font-weight:600;font-size:13px}.tabs button.active{background:#fff;color:#234b3d;box-shadow:0 2px 8px #20332d10}.field{margin:0 0 15px}.field label{display:block;font-size:12px;color:#52645c;font-weight:600;margin-bottom:7px}.field input{width:100%;border:1px solid #e1e8e1;border-radius:10px;padding:12px 13px;color:#20332d;outline:none;background:#fff}.field input:focus{border-color:#6aa386;box-shadow:0 0 0 3px #68a0801a}.hint{font-size:11px;color:#8b9891;margin-top:6px}.primary{background:#235b49;color:white;border:0;border-radius:10px;padding:13px 16px;width:100%;font-weight:700;cursor:pointer;margin-top:7px;transition:.18s}.primary:hover{background:#194b3b;transform:translateY(-1px)}.primary:disabled{opacity:.65;cursor:wait}.message{font-size:13px;margin:13px 0 0;line-height:1.5}.message.error{color:#bb4c42}.message.success{color:#39805f}.dashboard{grid-column:1/-1;align-self:stretch}.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.welcome small{color:#7b8982}.welcome h1{font:700 30px Manrope,sans-serif;letter-spacing:-1px;margin:5px 0}.logout{border:1px solid #dce5dd;border-radius:9px;padding:9px 14px;background:white;color:#486056;cursor:pointer}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.stat{padding:18px;border:1px solid #e7ece6;background:#fff;border-radius:15px}.stat span{color:#7a8982;font-size:12px}.stat strong{display:block;font:700 24px Manrope,sans-serif;margin-top:9px}.panel{border:1px solid #e7ece6;background:#fff;border-radius:16px;padding:22px;margin-bottom:18px}.panel h3{font:700 16px Manrope,sans-serif;margin:0 0 18px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:13px}th{color:#87938d;font-weight:600;padding:10px;border-bottom:1px solid #edf0eb}td{padding:13px 10px;border-bottom:1px solid #f0f2ef;color:#465950}tr:last-child td{border-bottom:0}.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#edf5ed;color:#448060;font-size:11px;font-weight:700}.empty{padding:25px;text-align:center;color:#7e8a84;font-size:13px;background:#f8faf7;border-radius:11px}.vaccine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.vaccine{border:1px solid #edf0eb;border-radius:12px;padding:14px}.vaccine strong{font-size:13px;display:block;margin-bottom:7px}.vaccine span{font-size:12px;color:#7e8a84}.hidden{display:none!important}.foot{text-align:center;color:#95a099;font-size:11px;margin-top:30px}@media(max-width:760px){.shell{padding:20px 18px 34px}.nav{margin-bottom:30px}.layout{grid-template-columns:1fr;gap:20px}.intro{padding:0}.intro h1{font-size:43px}.intro p{font-size:14px}.feature-list{display:none}.card{padding:24px}.dashboard{grid-column:auto}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}}@media(max-width:420px){.card{padding:21px}.intro h1{font-size:38px}.dash-head{align-items:flex-start}.stats{gap:9px}.stat{padding:14px}.stat strong{font-size:20px}}
+    .admin-tools,.staff-tools{margin-bottom:20px}.admin-tools summary,.staff-tools summary{cursor:pointer;color:#315f4d;font-size:14px;font-weight:700;padding:12px 0}.admin-tools form{display:grid;grid-template-columns:2fr 3fr 1fr 1fr 1fr auto;gap:9px;align-items:end;margin-top:18px}.staff-tools form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;margin-top:12px}.admin-tools .field,.staff-tools .field{margin:0 0 12px}.admin-tools .field input,.staff-tools .field input,.staff-tools select{width:100%;border:1px solid #e1e8e1;border-radius:10px;padding:10px 12px;color:#20332d;background:white}.admin-tools .primary,.staff-tools .primary{width:auto;margin:0;padding:11px 15px;white-space:nowrap}.staff-tools .primary{align-self:end;margin-bottom:12px}.row-action{border:1px solid #dce5dd;background:white;border-radius:8px;padding:7px 9px;color:#486056;cursor:pointer;font-size:12px;margin:2px}.row-action.danger{color:#b5473d;border-color:#f0d8d4}.row-actions{white-space:nowrap}.archived{color:#929c96}@media(max-width:760px){.admin-tools form{grid-template-columns:1fr 1fr}.admin-tools form .field:first-child,.admin-tools form .field:nth-child(2){grid-column:1/-1}.staff-tools form{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="nav"><div class="brand"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M3 12h18"/></svg></span>VaxCare</div><span class="nav-note">Student vaccination portal</span></header>
+    <main class="layout">
+      <section class="intro" id="intro"><span class="eyebrow">Your health, in one place</span><h1>Stay protected.<br>Stay on track.</h1><p>Keep your vaccination history close at hand. Create an account to see your records and check which vaccines are available.</p><div class="feature-list"><div class="feature"><span class="feature-icon">✓</span>Private access to your vaccination history</div><div class="feature"><span class="feature-icon">⌕</span>Browse vaccines offered by your school</div><div class="feature"><span class="feature-icon">⌁</span>One secure place for your health records</div></div></section>
+      <section class="card" id="auth-card"><h2 id="form-title">Welcome back</h2><p class="sub" id="form-subtitle">Sign in to view your vaccination records.</p><div class="tabs"><button id="login-tab" class="active" type="button">Sign in</button><button id="register-tab" type="button">Create account</button></div>
+        <form id="auth-form" novalidate><div class="field hidden" id="name-field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" minlength="2" placeholder="e.g. Alex Morgan"></div><div class="field hidden" id="student-no-field"><label for="student-no">Student number</label><input id="student-no" name="studentNo" autocomplete="off" placeholder="Enter your school-issued student number"><div class="hint">Your school must add you to its roster before you can register.</div></div><div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@school.edu"></div><div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Enter your password"><div class="hint hidden" id="password-hint">Use at least 8 characters.</div></div><button class="primary" id="submit-button" type="submit">Sign in</button><p class="message" id="form-message" role="status" aria-live="polite"></p></form>
+      </section>
+      <section class="dashboard hidden" id="dashboard"><div class="dash-head"><div class="welcome"><small id="welcome-email"></small><h1 id="welcome-name">Your health dashboard</h1></div><button class="logout" id="logout-button">Sign out</button></div><div class="stats"><div class="stat"><span>Vaccination records</span><strong id="record-count">—</strong></div><div class="stat"><span>Vaccines available</span><strong id="vaccine-count">—</strong></div><div class="stat"><span>Account type</span><strong id="account-role" style="font-size:17px">Student</strong></div></div><section class="panel staff-tools hidden" id="staff-tools"><h3>Clinic desk</h3><details><summary>Add a student to the roster</summary><form id="roster-form"><div class="field"><label for="roster-number">Student number</label><input id="roster-number" required maxlength="30"></div><div class="field"><label for="roster-course">Course (optional)</label><input id="roster-course" maxlength="100"></div><div class="field"><label for="roster-year">Year level (optional)</label><input id="roster-year" type="number" min="1" max="6"></div><div class="field"><label for="roster-contact">Contact (optional)</label><input id="roster-contact" maxlength="50"></div><button class="primary" type="submit">Add to roster</button></form><p class="message" id="roster-message" role="status"></p></details><details><summary>Record a vaccination dose</summary><form id="dose-form"><div class="field"><label for="dose-student">Student</label><select id="dose-student" required><option value="">Choose a student</option></select></div><div class="field"><label for="dose-vaccine">Vaccine</label><select id="dose-vaccine" required><option value="">Choose an in-stock vaccine</option></select></div><div class="field"><label for="dose-date">Vaccination date</label><input id="dose-date" type="date" required></div><div class="field"><label for="dose-number">Dose number</label><input id="dose-number" type="number" min="1" step="1" required value="1"></div><div class="field"><label for="dose-remarks">Notes (optional)</label><input id="dose-remarks" maxlength="1000" placeholder="Optional notes"></div><button class="primary" type="submit">Save vaccination record</button></form><p class="message" id="dose-message" role="status" aria-live="polite"></p></details></section><section class="panel admin-tools hidden" id="admin-tools"><details><summary>＋ Add a vaccine</summary><form id="vaccine-form"><div class="field"><label for="vaccine-name">Vaccine name</label><input id="vaccine-name" required maxlength="100" placeholder="e.g. Influenza"></div><div class="field"><label for="vaccine-description">Description</label><input id="vaccine-description" placeholder="Optional details"></div><div class="field"><label for="vaccine-price">Price</label><input id="vaccine-price" type="number" min="0" step="0.01" required value="0"></div><div class="field"><label for="vaccine-stock">Stock</label><input id="vaccine-stock" type="number" min="0" step="1" required value="0"></div><div class="field"><label for="vaccine-reorder">Reorder level</label><input id="vaccine-reorder" type="number" min="0" step="1" required value="0"></div><button class="primary" type="submit">Add vaccine</button></form><p class="message" id="admin-message" role="status"></p></details></section><div class="panel"><h3>Your vaccination history</h3><div id="records-content"></div></div><div class="panel"><h3>Available vaccines</h3><div id="vaccines-content"></div></div><div class="panel hidden" id="inventory-panel"><h3>Vaccine inventory</h3><p class="message" id="inventory-message" role="status" aria-live="polite"></p><div id="inventory-content"></div></div></section>
+    </main><footer class="foot">VaxCare · Secure student health records</footer>
+  </div>
+<script>
+(() => {
+  const API = '/api/v1';
+  const $ = (id) => document.getElementById(id);
+  let mode = 'login';
+  const form = $('auth-form');
+  function setMode(next) {
+    mode = next;
+    const registering = mode === 'register';
+    $('login-tab').classList.toggle('active', !registering);
+    $('register-tab').classList.toggle('active', registering);
+    $('name-field').classList.toggle('hidden', !registering);
+    $('student-no-field').classList.toggle('hidden', !registering);
+    $('student-no').required = registering;
+    $('password-hint').classList.toggle('hidden', !registering);
+    $('password').autocomplete = registering ? 'new-password' : 'current-password';
+    $('password').minLength = registering ? 8 : 0;
+    $('form-title').textContent = registering ? 'Create your account' : 'Welcome back';
+    $('form-subtitle').textContent = registering ? 'Register as a student to access your health records.' : 'Sign in to view your vaccination records.';
+    $('submit-button').textContent = registering ? 'Create student account' : 'Sign in';
+    $('form-message').textContent = '';
+    $('form-message').className = 'message';
+  }
+  $('login-tab').addEventListener('click', () => setMode('login'));
+  $('register-tab').addEventListener('click', () => setMode('register'));
+  async function request(path, options = {}) {
+    const response = await fetch(`${API}${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+    const data = response.status === 204 ? null : await response.json().catch(() => null);
+    if (!response.ok) throw new Error(data?.message || `Request failed (${response.status})`);
+    return data;
+  }
+  function showMessage(message, kind = 'error') { $('form-message').textContent = message; $('form-message').className = `message ${kind}`; }
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = $('submit-button');
+    const original = mode === 'register' ? 'Create student account' : 'Sign in';
+    button.disabled = true; button.textContent = 'Please wait…'; showMessage('');
+    const email = $('email').value.trim();
+    const password = $('password').value;
+    try {
+      if (mode === 'register') {
+        await request('/auth/register', { method: 'POST', body: JSON.stringify({ name: $('name').value.trim(), studentNo: $('student-no').value.trim(), email, password }) });
+        setMode('login'); $('email').value = email; $('password').value = password;
+        showMessage('Account created. Signing you in…', 'success');
+      }
+      const { accessToken } = await request('/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+      sessionStorage.setItem('vaxcare-token', accessToken);
+      await showDashboard();
+    } catch (error) { showMessage(error.message || 'Something went wrong. Please try again.'); }
+    finally { button.disabled = false; button.textContent = original; }
+  });
+  async function authorized(path, options = {}) {
+    return request(path, { ...options, headers: { ...(options.headers || {}), Authorization: `Bearer ${sessionStorage.getItem('vaxcare-token')}` } });
+  }
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[char]));
+  function renderRecords(records) {
+    if (!records.length) return '<div class="empty">No vaccination records yet. When a school staff member records a dose for you, it will appear here.</div>';
+    return `<div class="table-wrap"><table><thead><tr><th>Vaccine</th><th>Date</th><th>Dose</th><th>Notes</th></tr></thead><tbody>${records.map((r) => `<tr><td><strong>${escapeHtml(r.vaccine?.vaccineName || 'Vaccine')}</strong></td><td>${escapeHtml(String(r.vaccinationDate || '').slice(0,10) || '—')}</td><td><span class="badge">Dose ${escapeHtml(r.doseNumber)}</span></td><td>${escapeHtml(r.remarks || '—')}</td></tr>`).join('')}</tbody></table></div>`;
+  }
+  function renderVaccines(vaccines) {
+    if (!vaccines.length) return '<div class="empty">No vaccines are listed yet. Check back later.</div>';
+    return `<div class="vaccine-grid">${vaccines.map((v) => `<div class="vaccine"><strong>${escapeHtml(v.vaccineName)}</strong><span>${escapeHtml(v.description || 'Available through your school')}<br>Price: ${Number(v.price || 0).toFixed(2)}</span></div>`).join('')}</div>`;
+  }
+  function renderInventory(vaccines) {
+    if (!vaccines.length) return '<div class="empty">No vaccines in inventory. Add one above to get started.</div>';
+    return `<div class="table-wrap"><table class="admin-table"><thead><tr><th>Vaccine</th><th>Stock</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead><tbody>${vaccines.map((v) => `<tr class="${v.isArchived ? 'archived' : ''}"><td><strong>${escapeHtml(v.vaccineName)}</strong><br><small>${escapeHtml(v.description || '')}</small></td><td>${escapeHtml(v.stockQuantity)}</td><td><input aria-label="Price for ${escapeHtml(v.vaccineName)}" type="number" min="0" step="0.01" value="${Number(v.price || 0).toFixed(2)}" data-price="${v.id}"></td><td>${v.isArchived ? 'Archived' : 'Active'}</td><td class="row-actions"><button class="row-action" data-save="${v.id}">Save price</button><button class="row-action" data-archive="${v.id}" data-current="${v.isArchived}">${v.isArchived ? 'Restore' : 'Archive'}</button><button class="row-action danger" data-delete="${v.id}" data-name="${escapeHtml(v.vaccineName)}">Delete</button></td></tr>`).join('')}</tbody></table></div>`;
+  }
+  async function showDashboard() {
+    const [user, records, vaccines] = await Promise.all([authorized('/auth/me'), authorized('/vaccination-records'), authorized('/vaccines')]);
+    $('intro').classList.add('hidden'); $('auth-card').classList.add('hidden'); $('dashboard').classList.remove('hidden');
+    $('welcome-name').textContent = `Hello, ${user.name.split(' ')[0]}`; $('welcome-email').textContent = user.email; $('account-role').textContent = user.role[0].toUpperCase() + user.role.slice(1);
+    $('record-count').textContent = records.length; $('vaccine-count').textContent = vaccines.length;
+    $('records-content').innerHTML = renderRecords(records); $('vaccines-content').innerHTML = renderVaccines(vaccines);
+    const isAdmin = user.role === 'admin';
+    const canManageClinic = isAdmin || user.role === 'staff';
+    $('staff-tools').classList.toggle('hidden', !canManageClinic);
+    $('admin-tools').classList.toggle('hidden', !isAdmin);
+    $('inventory-panel').classList.toggle('hidden', !isAdmin);
+    if (isAdmin) $('inventory-content').innerHTML = renderInventory(vaccines);
+    if (canManageClinic) {
+      const students = await authorized('/students');
+      $('dose-student').innerHTML = '<option value="">Choose a student</option>' + students.map((student) => `<option value="${student.id}">${escapeHtml(student.studentNo)} · ${escapeHtml(student.user?.name || 'No account yet')}${student.course ? ` · ${escapeHtml(student.course)}` : ''}</option>`).join('');
+      const usableVaccines = vaccines.filter((vaccine) => !vaccine.isArchived && vaccine.stockQuantity > 0);
+      $('dose-vaccine').innerHTML = '<option value="">Choose an in-stock vaccine</option>' + usableVaccines.map((vaccine) => `<option value="${vaccine.id}">${escapeHtml(vaccine.vaccineName)} · ${vaccine.stockQuantity} in stock</option>`).join('');
+    }
+  }
+  $('dose-date').value = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  $('dose-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = $('dose-message');
+    try {
+      await authorized('/vaccination-records', { method: 'POST', body: JSON.stringify({ studentId: Number($('dose-student').value), vaccineId: Number($('dose-vaccine').value), vaccinationDate: $('dose-date').value, doseNumber: Number($('dose-number').value), remarks: $('dose-remarks').value.trim() || undefined }) });
+      message.textContent = 'Vaccination record saved and vaccine stock updated.'; message.className = 'message success';
+      $('dose-remarks').value = ''; await showDashboard();
+    } catch (error) { message.textContent = error.message; message.className = 'message error'; }
+  });
+  $('roster-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = $('roster-message');
+    const yearLevel = $('roster-year').value;
+    try {
+      await authorized('/students', { method: 'POST', body: JSON.stringify({ studentNo: $('roster-number').value.trim(), course: $('roster-course').value.trim() || undefined, yearLevel: yearLevel ? Number(yearLevel) : undefined, contact: $('roster-contact').value.trim() || undefined }) });
+      $('roster-form').reset(); message.textContent = 'Student added to the roster. They can now register with this student number.'; message.className = 'message success'; await showDashboard();
+    } catch (error) { message.textContent = error.message; message.className = 'message error'; }
+  });
+  $('vaccine-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = $('admin-message');
+    try {
+      await authorized('/vaccines', { method: 'POST', body: JSON.stringify({ vaccineName: $('vaccine-name').value.trim(), description: $('vaccine-description').value.trim() || undefined, price: Number($('vaccine-price').value), stockQuantity: Number($('vaccine-stock').value), reorderLevel: Number($('vaccine-reorder').value) }) });
+      $('vaccine-form').reset(); $('vaccine-price').value = 0; $('vaccine-stock').value = 0; $('vaccine-reorder').value = 0;
+      message.textContent = 'Vaccine added to inventory.'; message.className = 'message success'; await showDashboard();
+    } catch (error) { message.textContent = error.message; message.className = 'message error'; }
+  });
+  $('inventory-content').addEventListener('click', async (event) => {
+    const button = event.target.closest('button');
+    if (!button) return;
+    const id = button.dataset.save || button.dataset.archive || button.dataset.delete;
+    if (!id) return;
+    try {
+      if (button.dataset.save) {
+        const price = Number(document.querySelector(`[data-price="${id}"]`).value);
+        if (!Number.isFinite(price) || price < 0) throw new Error('Enter a valid price of zero or more.');
+        await authorized(`/vaccines/${id}`, { method: 'PATCH', body: JSON.stringify({ price }) });
+      } else if (button.dataset.archive) {
+        await authorized(`/vaccines/${id}`, { method: 'PATCH', body: JSON.stringify({ isArchived: button.dataset.current !== 'true' }) });
+      } else {
+        if (!confirm(`Permanently delete ${button.dataset.name}? This may fail if vaccination records refer to it. Archive is safer when it has been used.`)) return;
+        await authorized(`/vaccines/${id}`, { method: 'DELETE' });
+      }
+      $('inventory-message').textContent = button.dataset.save ? 'Price updated.' : button.dataset.archive ? (button.dataset.current === 'true' ? 'Vaccine restored.' : 'Vaccine archived.') : 'Vaccine deleted.';
+      $('inventory-message').className = 'message success';
+      await showDashboard();
+    } catch (error) { $('inventory-message').textContent = error.message || 'Could not update this vaccine.'; $('inventory-message').className = 'message error'; }
+  });
+  $('logout-button').addEventListener('click', () => { sessionStorage.removeItem('vaxcare-token'); location.reload(); });
+  if (sessionStorage.getItem('vaxcare-token')) showDashboard().catch(() => { sessionStorage.removeItem('vaxcare-token'); });
+})();
+</script>
+</body>
+</html>

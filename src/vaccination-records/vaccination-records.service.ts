@@ -2,7 +2,7 @@ import {
   ConflictException, ForbiddenException, Injectable, NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { Student } from '../students/entities/student.entity';
 import { Role, User } from '../users/entities/user.entity';
 import { Vaccine } from '../vaccines/entities/vaccine.entity';
@@ -24,29 +24,35 @@ export class VaccinationRecordsService {
     @InjectRepository(VaccinationRecord) private repo: Repository<VaccinationRecord>,
     @InjectRepository(Student) private students: Repository<Student>,
     @InjectRepository(Vaccine) private vaccines: Repository<Vaccine>,
+    private dataSource: DataSource,
   ) {}
 
   async create(dto: CreateVaccinationRecordDto, current: AuthUser) {
-    const student = await this.students.findOne({ where: { id: dto.studentId } });
-    if (!student) throw new NotFoundException('Student not found');
+    const record = await this.dataSource.transaction(async (manager) => {
+      const students = manager.getRepository(Student);
+      const vaccines = manager.getRepository(Vaccine);
+      const records = manager.getRepository(VaccinationRecord);
+      const student = await students.findOne({ where: { id: dto.studentId } });
+      if (!student) throw new NotFoundException('Student not found');
 
-    const vaccine = await this.vaccines.findOne({ where: { id: dto.vaccineId } });
-    if (!vaccine) throw new NotFoundException('Vaccine not found');
-    if (vaccine.stockQuantity < 1) throw new ConflictException('Vaccine is out of stock');
+      const vaccine = await vaccines.findOne({ where: { id: dto.vaccineId } });
+      if (!vaccine) throw new NotFoundException('Vaccine not found');
+      if (vaccine.isArchived) throw new ConflictException('Archived vaccines cannot be used for new records');
+      if (vaccine.stockQuantity < 1) throw new ConflictException('Vaccine is out of stock');
 
-    vaccine.stockQuantity -= 1;
-    await this.vaccines.save(vaccine);
-
-    const record = await this.repo.save(
-      this.repo.create({
-        student,
-        vaccine,
-        vaccinationDate: dto.vaccinationDate,
-        doseNumber: dto.doseNumber,
-        remarks: dto.remarks,
-        administeredBy: { id: current.id } as User,
-      }),
-    );
+      vaccine.stockQuantity -= 1;
+      await vaccines.save(vaccine);
+      return records.save(
+        records.create({
+          student,
+          vaccine,
+          vaccinationDate: dto.vaccinationDate,
+          doseNumber: dto.doseNumber,
+          remarks: dto.remarks,
+          administeredBy: { id: current.id } as User,
+        }),
+      );
+    });
     return this.findOne(record.id, current);
   }
 

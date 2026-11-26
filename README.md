@@ -25,6 +25,14 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Web portal
+
+Start the API with `npm run start:dev` and open `http://localhost:3000`.
+
+Before a student can register, staff must add their student number to the roster from the **Clinic desk** section. Students then create an account using that number; registration links the account to the matching student record. Staff and admins can use the clinic desk to record a dose for a rostered student and an in-stock vaccine. Saving a dose also reduces vaccine stock.
+
+Admins can add vaccines, update prices, archive or restore vaccines, and permanently delete unused vaccines from the vaccine inventory panel. Vaccines with vaccination records cannot be deleted; archive them instead.
+
 ## Project setup
 
 ```bash

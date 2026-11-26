@@ -1,11 +1,12 @@
 import {
-  ConflictException, Injectable, OnModuleInit, UnauthorizedException,
+  ConflictException, Injectable, NotFoundException, OnModuleInit, UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
+import { Student } from '../students/entities/student.entity';
 import { Role, User } from '../users/entities/user.entity';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -14,6 +15,7 @@ import { RegisterDto } from './dto/register.dto';
 export class AuthService implements OnModuleInit {
   constructor(
     @InjectRepository(User) private users: Repository<User>,
+    private dataSource: DataSource,
     private jwt: JwtService,
     private config: ConfigService,
   ) {}
@@ -35,18 +37,27 @@ export class AuthService implements OnModuleInit {
   }
 
   async register(dto: RegisterDto) {
-    if (await this.users.findOne({ where: { email: dto.email } })) {
-      throw new ConflictException('Email already registered');
-    }
-    const user = await this.users.save(
-      this.users.create({
+    return this.dataSource.transaction(async (manager) => {
+      const users = manager.getRepository(User);
+      const students = manager.getRepository(Student);
+      if (await users.findOne({ where: { email: dto.email } })) {
+        throw new ConflictException('Email already registered');
+      }
+      const student = await students.findOne({ where: { studentNo: dto.studentNo }, relations: { user: true } });
+      if (!student) throw new NotFoundException('Student number was not found. Ask your school to add you to the student roster.');
+      if (student.user) throw new ConflictException('This student number already has an account');
+
+      const user = users.create({
         email: dto.email,
         name: dto.name,
         role: Role.STUDENT,
         passwordHash: await bcrypt.hash(dto.password, 10),
-      }),
-    );
-    return { id: user.id, email: user.email, name: user.name, role: user.role, createdAt: user.createdAt };
+      });
+      await users.save(user);
+      student.user = user;
+      await students.save(student);
+      return { id: user.id, email: user.email, name: user.name, role: user.role, createdAt: user.createdAt };
+    });
   }
 
   async login(dto: LoginDto) {

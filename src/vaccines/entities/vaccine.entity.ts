@@ -19,6 +19,8 @@ export class Vaccine {
 
   @Column({ name: 'reorder_level', type: 'int', default: 0 }) reorderLevel: number;
 
+  @Column({ name: 'is_archived', type: 'boolean', default: false }) isArchived: boolean;
+
   @CreateDateColumn({ name: 'created_at' }) createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' }) updatedAt: Date;
